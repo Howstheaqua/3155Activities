@@ -16,6 +16,9 @@ class TestPythonBasicsOne(unittest.TestCase):
         self.assertEqual(pythonBasics3.starts_with_non_number(" 1 more meal left in the fridge"), True)
 
         self.assertEqual(pythonBasics3.starts_with_non_number("# is used to comment a line in Python"), True)
+        self.assertEqual(pythonBasics3.starts_with_non_number("This is not a number"), True)
+        self.assertEqual(pythonBasics3.starts_with_non_number("1 is a number"), False)
+        self.assertEqual(pythonBasics3.starts_with_non_number("3 is also a number"), False)
 
         # Please add three more test cases following the order above
 
@@ -31,6 +34,9 @@ class TestPythonBasicsOne(unittest.TestCase):
         self.assertEqual(pythonBasics3.multiple_words("It's-all-one-word"), False)
 
         self.assertEqual(pythonBasics3.multiple_words(" one-sided? "), False)
+        self.assertEqual(pythonBasics3.multiple_words(" Three words please "), True)
+        self.assertEqual(pythonBasics3.multiple_words("OneWord?"), False)
+        self.assertEqual(pythonBasics3.multiple_words("Many Words?"), True)
 
         # Please add three more test cases following the order above
 
