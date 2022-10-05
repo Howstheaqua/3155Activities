@@ -11,31 +11,42 @@
 # to n (including n).
 
 def count_threes(n):
-  return int(n/3)
+  threes = {}
+  for char in n:
+    if int(char)%3==0:
+      if char in threes:
+        threes[char] += 1
+      else:
+        threes[char] = 1
+    else:
+      pass
+  return int(max(threes, key=threes.get))
 
 
 # Part B. longest_consecutive_repeating_char
 # Define a function longest_consecutive_repeating_char(s) that takes
 # a string s and returns the character that has the longest consecutive repeat.
 def longest_consecutive_repeating_char(s):
-  longestchar = (s[0], 0)
-  lastchar = s[0]
-  currentcount = 0
+  dictionary = {}
+  currentCount = 0
+  latestchar = ''
+
   for char in s:
-    
-    if char == lastchar:
-      currentcount += 1
-      if currentcount >= longestchar[1]:
-        longestchar = (lastchar, currentcount)
-    elif char != lastchar:
-      if currentcount >= longestchar[1]:
-        longestchar = (lastchar, currentcount)
-      currentcount = 0
-      lastchar = char
-      
-
-
-  return longestchar[0]
+      if char == latestchar:
+          currentCount += 1
+          if char in dictionary:
+              if currentCount > dictionary[char]:
+                  dictionary[char]=currentCount
+      else:
+          currentCount = 1
+          dictionary.update({char: currentCount})
+          latestchar = char
+  maxvalue = dictionary[max(dictionary, key=dictionary.get)]
+  listofmax = []
+  for k,v in dictionary.items():
+    if v == maxvalue:
+      listofmax.append(k)
+  return listofmax
 
 
 # Part C. is_palindrome
