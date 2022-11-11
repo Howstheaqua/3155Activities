@@ -37,7 +37,8 @@ def new_note():
     a_user = {'name' : 'Evan', 'email' : 'ehughe29@uncc.edu'}
     print('request method is', request.method)
     if request.method == 'POST':
-        return '<h1> POST method used for this request </h1>'
+        request_data = request.form
+        return f'data: {request_data} !'
     return render_template('new.html', user=a_user)
 
 app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=True)
