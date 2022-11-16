@@ -1,7 +1,7 @@
 from database import db
 
 class Note(db.Model):
-    id = db.Colum('id', db.Integer, primary_key=True)
+    id = db.Column('id', db.Integer, primary_key=True)
     title = db.Column('title', db.String(200))
     text = db.Column('text', db.String(100))
     data =db.Column('data', db.String(50))
